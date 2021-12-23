@@ -1,5 +1,5 @@
 import datetime
-
+from suntimes import Suntimes 
 
 def helper_mytimedelta(td):
     try:
@@ -36,3 +36,10 @@ def timedelta_to_datetime(forminstance,timedelta):
         minutes = int((ttlseconds%3600)//60)
         time = datetime.time(hours, minutes)
         return datetime.datetime.combine(date,time)
+
+#date
+day = datetime(2021,1,6)
+#location Paris Notre-Dame France
+sun = SunTimes(2.349902, 48.852968, 35)
+
+print(sun)

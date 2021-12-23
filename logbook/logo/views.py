@@ -1,13 +1,12 @@
-from functools import total_ordering
-from django.forms import ModelForm
+# django imports
 from django.shortcuts import redirect, render
-# import datetime
-from django.urls import reverse
+from django.db.models import Sum
+from django.forms.models import model_to_dict
+
+# directory imports
 from .models import *
 from .forms import *
 from .utilities import helper_mytimedelta
-from django.forms.models import model_to_dict
-from django.db.models import Sum
 
 
 
