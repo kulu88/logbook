@@ -1,0 +1,23 @@
+{% extends 'logo/base.html' %}
+
+{% block content %}
+
+<hr>
+<h3>Logbook</h3>
+<hr>
+<h5><a href="{% url 'logo:add_flight' %}">Add a Flight</a></h5>
+<hr>
+<h4>Total flights: {{flights.count}}</h4>
+<ul>
+    
+    <br>
+    {% for flight in flights %}
+        <li><a href="{% url 'logo:flight_detail' flight.pk %}">{{flight.flight_date}}  {{flight}} : DEP at {{ flight.depTime }} - ARR at {{ flight.arrTime }}</a>
+            &nbsp;<a href ="{% url 'logo:delete_flight' flight.pk %}" style="color: red;">Delete this Flight</a>
+            &nbsp;<a href="{% url 'logo:update_flight' flight.pk %}" style="color: teal;">Edit this Flight</a>
+        </li>
+    {% empty %}
+        <h5><li>No Flights.</li></h5>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'logo/base.html' %}
+
+{% block content %}
+
+<hr>
+<h3>Add an Aircraft</h3>
+<hr>
+<form action ="#" method ="post">
+    {% csrf_token %}
+    {{aircraftform}}
+    
+    <input type="submit" value="Add aircraft">
+</form>
+<hr>
+<h3>Aircraft list</h3>
+<ul>
+    {% for aircraft in aircrafts %}
+    <li>
+        {{ aircraft }} <a href="{% url 'logo:delete_aircraft' aircraft.pk %}" style="color: red;">Delete this aircraft</a>
+        &nbsp;<a href="{% url 'logo:update_aircraft' aircraft.id %}" style="color: teal;">Edit this Aircraft</a>
+    </li>
+    {% empty %}
+    <li>
+        <h5>No Record</h5>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

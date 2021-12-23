@@ -1,0 +1,28 @@
+{% extends 'logo/base.html' %}
+
+{% block content %}
+
+<hr>
+<h3>Add a Pilot</h3>
+<hr>
+<form action ="#" method ="post">
+    {% csrf_token %}
+    {{peopleform}}
+    
+    <input type="submit" value="Add Person">
+</form>
+<hr>
+<h3>Pilot's list</h3>
+<ul>
+    {% for person in people %}
+    <li>
+        {{person.id}}:{{ person }} <a href="{% url 'logo:delete_person' person.pk %}">Delete this person</a>
+    </li>
+    {% empty %}
+    <li>
+        <h5>No Record</h5>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'logo/base.html' %}
+
+
+{% block content %}
+<hr>
+<h3>Add a Flight</h3>
+<br>
+
+    <form action = "#" method="post">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{hidden}}
+        {% endfor %}
+        <ul>
+            {% for form in myFlight %}
+            <li><h6>{{form.label}} {{form}} {{ form.errors }}</h6></li>
+            {% endfor %}
+            
+        </ul>
+        
+    
+        
+        <input type = "submit" value='Add/Update Flight' action=".">
+        &nbsp;&nbsp;<a href = "{% url 'logo:logbook' %}">Go Back</a>
+    </form>
+
+
+<hr>
+
+{% endblock %}
+
+
+<! not needed>
+<div>
+    <h5>Sector Time - Day Time</h5>
+    <h5>{{ fltduration }} - {{daytime}}</h5>
+        
+</div>

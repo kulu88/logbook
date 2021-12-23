@@ -1,0 +1,37 @@
+{% extends 'logo/base.html' %}
+
+{% block content %}
+<h1>Flight Details</h1>
+
+<table style="border: 1px solid black;">
+    <thead>
+        {% for field in flight %}
+        <th>{{ field.label }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+        {% for field in flight %}
+        <th>{{ field }}</th>
+        {% endfor %}
+    </tbody>
+
+</table>
+<hr>
+<a href="{% url 'logo:logbook' %}">Go back</a>
+
+
+{% endblock %}
+
+
+<thead>
+    {% for field in form %}
+        <th>{{ field.label }}</th>
+    {% endfor %}
+</thead>
+<tbody>
+    <tr>
+    {% for field in form %}
+        <td>{{ field.value }}</td>
+    {% endfor %}
+    </tr>
+</tbody>

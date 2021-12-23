@@ -1,0 +1,30 @@
+{% extends 'logo/base.html' %}
+
+{% block content %}
+
+<hr>
+<h3>Add an Airport</h3>
+<hr>
+<form action ="#" method ="post">
+    {% csrf_token %}
+    {{airportform}}
+    
+    <input type="submit" value="Add airport">
+</form>
+<hr>
+<h3>Airport's list</h3>
+<ul>
+    {% for airport in airports %}
+    <li>
+        <h5>{{ airport }}
+        <a href="{% url 'logo:delete_airport' airport.pk %}" style="color: red;">Delete this airport</a>
+        &nbsp;<a href="{% url 'logo:update_airport' airport.pk %}" style="color: teal;">Edit this Airport</a></h5>
+    </li>
+    {% empty %}
+    <li>
+        <h5>No Record</h5>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
